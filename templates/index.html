@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House-Prediction</title>
+</head>
+<body>
+    <h1 style="color:rgb(164, 41, 41);text-align: center;">
+        House price prediction
+    </h1>
+    <div style="text-align: center;">
+        <form method="POST">
+            <label>Bedrooms:</label><br>
+            <input type="number" name="bedrooms" required/><br><br>
+            <label>Bathrooms:</label><br>
+            <input type="number" name="bathrooms" required/><br><br>
+            <label>Sft:</label><br>
+            <input type="number" name="sft" required/><br>
+
+            <label>location</label>
+            <select name="Location">
+                {% for i in location_mapping %}
+                <option value="{{location_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+
+            <label>status</label>
+            <select name="Status">
+                {% for i in status_mapping %}
+                <option value="{{status_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+
+            <label>direction</label>
+            <select name="direction">
+                {% for i in direction_mapping %}
+                <option value="{{direction_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+
+            <label>property-type</label>
+            <select name="property_type_mapping">
+                {% for i in property_type_mapping %}
+                <option value="{{property_type_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+             </select><br><br>
+            <button>Submit</button>
+        </form>
+        <br><br>
+        {% if prediction is defined %}
+    </div style="text-align:center;">
+         <label>Prediction: {{prediction}}</label>
+    </div>
+    {% endif %}
+</body>
+</html>
